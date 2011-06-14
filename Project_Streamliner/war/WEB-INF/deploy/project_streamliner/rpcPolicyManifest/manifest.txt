@@ -1,0 +1,4 @@
+# Module project_streamliner
+# RPC service class, partial path of RPC policy file
+com.ps.services.QueryService, CF527195DAA196C65DE711F498357E63.gwt.rpc
+com.ps.services.GreetingService, 8DC43F9D0E42B5177B86B77EF40ED3F5.gwt.rpc
