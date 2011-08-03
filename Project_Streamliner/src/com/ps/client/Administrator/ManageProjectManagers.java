@@ -45,6 +45,7 @@ public class ManageProjectManagers{
 		Button bNewManager = new Button("New Manager!", new ClickHandler() {
 		      public void onClick(ClickEvent event) {
 		    	  DialogBox dialog = createNewManager();
+		    	  //DialogBox dialog = dbTest();
 		    	  dialog.center();
 		 	      dialog.show();
 		    	  
@@ -67,6 +68,7 @@ public class ManageProjectManagers{
 		dlpCreateProjectManager.add(ftForm);
 		return dlpCreateProjectManager;
 	}
+	
 	
 	
 	// Create the methods for new, update, and current managers
@@ -98,11 +100,11 @@ public class ManageProjectManagers{
 		            Window.alert("No such file.");
 		          } else {
 		            Window.alert("PM added successfully.");
-		            try{ 	   
-					  	savePMForm(firstName.getText(),lastName.getText(),0, speciality.getText(),uploadProfilePhoto.getFilename()); // 0 will need to e changed by making method without number since it will be updated by calculation.
-					} catch(NumberFormatException e) { 
-						Window.alert(e.getMessage());
-					}
+//		            try{ 	   
+//					  	//savePMForm(firstName.getText(),lastName.getText(),0, speciality.getText(),uploadProfilePhoto.getFilename()); // 0 will need to e changed by making method without number since it will be updated by calculation.
+//					} catch(NumberFormatException e) { 
+//						Window.alert(e.getMessage());
+//					}
 		        }
 		      }
 		    });
@@ -126,7 +128,7 @@ public class ManageProjectManagers{
 	     form.addStyleName("table-center");
 	     form.addStyleName("demo-FormPanel");
 	     
-	     //UploadPhoto(form,b);
+	     ///UploadPhoto(form,b);
 	     
 	     vpCreateManagerForm.add(form);
 	     decPanel.setWidget(vpCreateManagerForm);
