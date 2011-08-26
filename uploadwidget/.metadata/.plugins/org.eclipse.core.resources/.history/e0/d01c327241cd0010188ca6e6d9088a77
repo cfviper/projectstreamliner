@@ -1,0 +1,67 @@
+package com.ps.server;
+import java.io.IOException;
+import java.util.Date;
+import java.util.Map;
+import java.util.logging.Logger;
+
+import javax.servlet.ServletException;
+import javax.servlet.http.*;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+import com.google.appengine.api.blobstore.BlobKey;
+import com.google.appengine.api.blobstore.BlobstoreService;
+import com.google.appengine.api.blobstore.BlobstoreServiceFactory;
+import com.google.appengine.api.datastore.DatastoreService;
+import com.google.appengine.api.datastore.DatastoreServiceFactory;
+import com.google.appengine.api.datastore.Entity;
+import com.google.appengine.api.datastore.KeyFactory;
+import com.google.appengine.api.images.ImagesService;
+import com.google.appengine.api.images.ImagesServiceFactory;
+import com.ps.shared.ProjectManagers;
+//import com.google.appengine.api.blobstore.BlobInfo;
+//import com.google.appengine.api.blobstore.BlobInfoFactory;
+//import com.google.appengine.api.users.User;
+//import com.google.appengine.api.users.UserService;
+//import com.google.appengine.api.users.UserServiceFactory;
+//import com.google.gwt.user.client.Window;
+//import com.ps.shared.Global;
+
+@SuppressWarnings("serial")
+public class ImageServlet extends AbstractUploadServlet {
+	private BlobstoreService blobService = BlobstoreServiceFactory.getBlobstoreService();
+	    private UploadImageDAO dao = new UploadImageDAO();    
+
+	    @Override
+	    protected void showForm(HttpServletRequest req, HttpServletResponse resp) 
+	        throws ServletException, IOException {
+	        String uploadUrl = blobService.createUploadUrl("/blobstore");
+	        req.setAttribute("uploadUrl", uploadUrl);
+	        req.getRequestDispatcher("blobstore.jsp").forward(req, resp);
+	    }
+	    
+	    @Override
+	    protected void handleSubmit(HttpServletRequest req, 
+	        HttpServletResponse resp) throws ServletException, IOException {
+	        Map<String, BlobKey> blobs = blobService.getUploadedBlobs(req);
+	        BlobKey blobKey = blobs.get(blobs.keySet().iterator().next());
+
+	        String photoPath = blobKey.getKeyString();
+	        String title = req.getParameter("title");
+	        String caption = req.getParameter("caption");
+	        
+	        ProjectManagers photoPM = new ProjectManagers(title, caption);
+	        photoPM.setPhotoPath(photoPath);
+	        dao.save(photoPM);
+
+	        resp.sendRedirect("blobstore?action=display&id=" + photo.getId());
+	    }
+	    
+	    @Override
+	    protected void showRecord(long id, HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+	        Photo photo = dao.findById(id);
+	        String photoPath = photo.getPhotoPath();
+
+	        blobService.serve(new BlobKey(photoPath), resp);
+	    }
+}
