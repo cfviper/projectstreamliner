@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<index>
+<deps cu="=Project_Streamliner/src&lt;com.ps.images{Images.java">
+<res path="mailchimp.jpg"/>
+<res path="com/ps/images/mailchimp.jpg"/>
+</deps>
+<deps cu="=Project_Streamliner/src&lt;com.ps.images{ImageResources.java">
+<res path="mailchimp.jpg"/>
+<res path="com/ps/images/mailchimp.jpg"/>
+</deps>
+</index>
