@@ -1,0 +1,2 @@
+serviceClass: com.ps.services.ImageService
+path: 311DA215E3EE182CC233A4B0C6497FBD.gwt.rpc
