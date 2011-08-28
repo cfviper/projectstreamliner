@@ -109,7 +109,7 @@ public class ImageServlet extends AbstractUploadServlet {
         	DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
         	datastore.put(uploadedImage);
         	String keyString = KeyFactory.keyToString(uploadedImage.getKey());
-            res.sendRedirect("/upload");// + blobKey.getKeyString());       //keyString  
+            res.sendRedirect(keyString);// + blobKey.getKeyString());       //keyString  
         }
 	}
 

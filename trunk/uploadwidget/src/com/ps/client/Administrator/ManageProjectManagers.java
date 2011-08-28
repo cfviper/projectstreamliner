@@ -69,7 +69,7 @@ public class ManageProjectManagers { // extends HttpServlet{
 		FlexTable ftForm = new FlexTable();
 		Label title = new Label("Create New Project Manager");
 
-		Button bNewManager = new Button("?!!New Manager!", new ClickHandler() {
+		Button bNewManager = new Button("!New Manager!", new ClickHandler() {
 			public void onClick(ClickEvent event) {
 				DialogBox dialog = createNewManager();
 				// DialogBox dialog = dbTest();
