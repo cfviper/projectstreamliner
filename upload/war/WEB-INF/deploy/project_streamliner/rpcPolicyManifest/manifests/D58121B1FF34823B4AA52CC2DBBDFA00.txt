@@ -1,2 +1,0 @@
-serviceClass: com.ps.services.QueryService
-path: CF527195DAA196C65DE711F498357E63.gwt.rpc
