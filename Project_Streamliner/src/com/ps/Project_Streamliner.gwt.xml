@@ -11,6 +11,7 @@
   <!-- <inherits name='com.google.gwt.user.theme.dark.Dark'/>     -->
 
   <!-- Other module inherits                                      -->
+  <inherits name='com.google.web.bindery.requestfactory.RequestFactory' />
   
   <!-- Specify the app entry point class.                         -->
   <entry-point class='com.ps.client.Project_Streamliner'/>
@@ -21,6 +22,7 @@
 
   <source path='services'/>  
   <source path='tables'/>
+  <source path='server/tables'/>
   <source path='images'/>
   <inherits name="com.ps.Project_Streamliner"/>
   <inherits name="com.ps.Project_Streamliner"/>

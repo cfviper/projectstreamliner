@@ -14,7 +14,7 @@ import java.util.List;
  * The client side stub for the RPC service.
  */
 @RemoteServiceRelativePath("query1") 
-public interface QueryService extends RemoteService {
+public interface QueryService extends RemoteService  {
 	public String findServer(String name) throws IllegalArgumentException;
 	public List<Employee> queryServer(String result) throws IllegalArgumentException;
 	
@@ -45,7 +45,7 @@ public interface QueryService extends RemoteService {
 	//////////////////////////	
 	public void addNewProgramManager(String firstName, String lastName, int programsManaged,String speciality, String uploadProfilePhoto);
 	//public void addNewProgramManager(String firstName, String lastName);
-	public String getBlobstoreUploadUrl();
+	//public String getBlobstoreUploadUrl();
 	
 }
 

@@ -21,7 +21,7 @@ import common.PMF;
  * The server side implementation of the RPC service.
  */
 //@SuppressWarnings("serial")
-public class QueryServiceImpl extends RemoteServiceServlet implements QueryService { 
+public class QueryServiceImpl extends RemoteServiceServlet  implements QueryService { 
 	PersistenceManager pm = PMF.get().getPersistenceManager();
 	private static final long serialVersionUID = 1L;
 	private PersistJDO persistDAO = new PersistJDO();
@@ -151,11 +151,11 @@ public class QueryServiceImpl extends RemoteServiceServlet implements QueryServi
         return blobstoreService.createUploadUrl("/upload");
 	}
 
-	@Override
-	public String getBlobstoreUploadUrl() {
-		BlobstoreService blobstoreService = BlobstoreServiceFactory.getBlobstoreService();
-        return blobstoreService.createUploadUrl("/upload");
-	}
+//	@Override
+//	public String getBlobstoreUploadUrl() {
+//		BlobstoreService blobstoreService = BlobstoreServiceFactory.getBlobstoreService();
+//        return blobstoreService.createUploadUrl("/upload");
+//	}
 
 	
 }

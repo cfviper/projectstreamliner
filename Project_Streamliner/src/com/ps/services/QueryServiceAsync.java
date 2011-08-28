@@ -13,7 +13,7 @@ import com.google.gwt.user.client.ui.FileUpload;
  * The async counterpart of <code>QueryService</code>.
  */
 
-public interface QueryServiceAsync {
+public interface QueryServiceAsync  {
 	public void findServer(String input, AsyncCallback<String> callback) throws IllegalArgumentException;
 	public void queryServer(String input, AsyncCallback<List<Employee>> asyncCallback);
 	
@@ -40,6 +40,6 @@ public interface QueryServiceAsync {
 	//////////////////////////
 	public void addNewProgramManager(String firstName, String lastName, int programsManaged, String speciality, String uploadProfilePhoto, AsyncCallback<Void> asyncCallback);
 	//public void addNewProgramManager2(String firstName, String lastName,  AsyncCallback<Void> asyncCallback);
-	public void getBlobstoreUploadUrl(AsyncCallback<String> asyncCallback);
+	//public void getBlobstoreUploadUrl(AsyncCallback<String> asyncCallback);
 	
 }

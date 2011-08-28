@@ -7,11 +7,16 @@ import com.ps.services.QueryServiceAsync;
 public class Global {
 
 	private final static QueryServiceAsync queryService = GWT.create(QueryService.class);
+	//private final static BlobstoreService blobstoreService = BlobstoreServiceFactory.getBlobstoreService();
 	
 	
 	public final static QueryServiceAsync getQueryService(){
 		return queryService;
 	}
+	
+//	public final static BlobstoreService getBlobstoreService(){
+//		return blobstoreService;
+//	}
 	
 	public static String escapeHtml(String html) {
 		if (html == null) {

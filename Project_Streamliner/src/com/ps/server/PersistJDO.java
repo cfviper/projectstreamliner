@@ -8,7 +8,7 @@ import javax.jdo.PersistenceManagerFactory;
 import common.PMF;
 
 import com.google.appengine.api.datastore.Text;
-import com.ps.server.tables.ProjectManagers;
+import com.ps.shared.ProjectManagers;
 import com.ps.tables.Employee;
 import com.ps.tables.Programs;
 import com.ps.tables.Projects;
@@ -177,7 +177,7 @@ public class PersistJDO{// implements EmployeeDAO{
 	///////////////////
 	public void addNewProgramManager(String firstName, String lastName, int programsManaged, String speciality, String fileURL) {
 		PersistenceManager pm = getPersistenceManagerFactory().getPersistenceManager();
-		ProjectManagers p = new ProjectManagers(firstName, lastName, programsManaged);
+		ProjectManagers p = new ProjectManagers(firstName, lastName, programsManaged, speciality, fileURL);
 		try {
 			pm.makePersistent(p);
 		} finally {
