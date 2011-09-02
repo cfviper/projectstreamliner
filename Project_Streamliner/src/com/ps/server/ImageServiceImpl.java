@@ -9,12 +9,13 @@ import com.google.appengine.api.users.User;
 import com.google.appengine.api.users.UserService;
 import com.google.appengine.api.users.UserServiceFactory;
 import com.google.gwt.user.server.rpc.RemoteServiceServlet;
+import com.ps.server.servlets.ImageServlet;
 import com.ps.services.ImageService;
 import com.ps.shared.ProjectManagers;
 
 
 @SuppressWarnings("serial")
-public class ImageServiceImpl extends RemoteServiceServlet implements ImageService {
+public class ImageServiceImpl extends ImageServlet implements ImageService { //extend RemoteServiceServlet
 
 	@Override
 	public String getBlobstoreUploadUrl() {
