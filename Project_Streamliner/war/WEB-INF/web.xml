@@ -18,13 +18,10 @@
   
   <servlet>
     <servlet-name>ImageServlet</servlet-name>
-    <servlet-class>com.ps.server.ImageServlet</servlet-class>
+    <servlet-class>com.ps.server.ImageServiceImpl</servlet-class>
   </servlet>
   
-  <servlet>
-    <servlet-name>abstractUploadServlet</servlet-name>
-    <servlet-class>com.ps.server.AbstractUploadServlet</servlet-class>
-  </servlet>
+  
   
   <servlet>
 	<servlet-name>requestFactoryServlet</servlet-name>
@@ -52,10 +49,6 @@
     <url-pattern>/project_streamliner/upload</url-pattern>
   </servlet-mapping>
   
-  <servlet-mapping>
-	<servlet-name>abstractUploadServlet</servlet-name>
-	<url-pattern>/project_streamliner/uploadabstract</url-pattern>
-  </servlet-mapping>
   
   <servlet-mapping>
 	<servlet-name>requestFactoryServlet</servlet-name>
