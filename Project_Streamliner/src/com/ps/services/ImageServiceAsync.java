@@ -8,7 +8,7 @@ import com.ps.shared.ProjectManagers;
 
 public interface ImageServiceAsync {
 
-	public void getBlobstoreUploadUrl(AsyncCallback<String> callback);
+	public void getBlobstoreUploadUrl(AsyncCallback callback);
 	//public void getBlobstoreUploadUrl();
 	
 	void get(String key, AsyncCallback<ProjectManagers> callback);
