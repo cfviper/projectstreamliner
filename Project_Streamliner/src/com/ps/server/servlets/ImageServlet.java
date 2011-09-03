@@ -18,6 +18,7 @@ import com.google.appengine.api.datastore.Entity;
 import com.google.appengine.api.datastore.KeyFactory;
 import com.google.appengine.api.images.ImagesService;
 import com.google.appengine.api.images.ImagesServiceFactory;
+import com.ps.server.servlets.AbstractUploadServlet;
 import com.ps.shared.ProjectManagers;
 //import com.google.appengine.api.blobstore.BlobInfo;
 //import com.google.appengine.api.blobstore.BlobInfoFactory;
@@ -36,18 +37,18 @@ public class ImageServlet extends AbstractUploadServlet {
     	//BlobInfo info = new	BlobInfoFactory().loadBlobInfo(blobstoreService.getUploadedBlobs(req).get("LOLUPLOAD"));
     	//Window.alert(info.toString());
     	//String url = blobstoreService.createUploadUrl("/upload");
-//    	BlobKey blobKey = new BlobKey(req.getParameter("blob-key"));
+    	//BlobKey blobKey = new BlobKey(req.getParameter("blob-key"));
     	
-    	Map<String, BlobKey> blobs = blobstoreService.getUploadedBlobs(req);
+    	Map<String, BlobKey> blobs = blobstoreService.getUploadedBlobs(req); // <--- Issue here maybe ?
     	BlobKey blobKey = blobs.get("image");
 //       
 //    	 //Map<String, BlobKey> blobs = blobstoreService.getUploadedBlobs(request);
 //         //BlobKey blobKey = blobs.get("myFile");
 //
-         if (blobKey == null) {
-                 res.sendRedirect("/");
-         } else {
-                 res.sendRedirect("/serve?blob-key=" + blobKey.getKeyString());
+        if (blobKey == null) {
+                res.sendRedirect("/");
+        } else {
+                res.sendRedirect("/upload?blob-key=" + blobKey.getKeyString());
          }
 //    	
 //        if (blobKey == null) {
@@ -62,7 +63,7 @@ public class ImageServlet extends AbstractUploadServlet {
 //        	// Don't even let the user upload or get here
 //        	//User user = userService.getCurrentUser();
 //        	
-        	Entity uploadedImage = new Entity("UploadedImage");
+//        	Entity uploadedImage = new Entity("UploadedImage");
 //        	uploadedImage.setProperty("blobKey", blobKey);
 //        	//uploadedImage.setProperty(ProjectManagers.CREATED_AT, new Date());
 //        	//uploadedImage.setProperty(ProjectManagers.OWNER_ID, user.getUserId());
@@ -74,10 +75,10 @@ public class ImageServlet extends AbstractUploadServlet {
 //        	datastore.put(uploadedImage);
 //        	
 //        	
-        	String keyString = KeyFactory.keyToString(uploadedImage.getKey());
-            res.sendRedirect("/upload?uploadedImageKey=" + blobKey.getKeyString());       //keyString     		
+//        	String keyString = KeyFactory.keyToString(uploadedImage.getKey());
+//            res.sendRedirect("/upload?uploadedImageKey=" + blobKey.getKeyString());       //keyString     		
 //        }
-   }
+    }
     
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
@@ -90,16 +91,14 @@ public class ImageServlet extends AbstractUploadServlet {
 
 	@Override
 	protected void showForm(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+		// TODO Auto-generated method stub	
 	}
 
-	@SuppressWarnings("unused")
 	@Override
-	protected void handleSubmit(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+	protected void handleSubmit(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException, ClassCastException, NullPointerException {
 		Map<String, BlobKey> blobs = blobstoreService.getUploadedBlobs(req);
     	BlobKey blobKey = blobs.get("image");
-    	res.sendRedirect("/upload"+ blobKey.getKeyString());       
-    	
+
         if (blobKey == null) {
         	res.sendRedirect("/");
         } else {
@@ -110,12 +109,13 @@ public class ImageServlet extends AbstractUploadServlet {
         	DatastoreService datastore = DatastoreServiceFactory.getDatastoreService();
         	datastore.put(uploadedImage);
         	String keyString = KeyFactory.keyToString(uploadedImage.getKey());
-            res.sendRedirect("/upload"+ blobKey.getKeyString());       //keyString  
+            res.sendRedirect(keyString);// + blobKey.getKeyString());       //keyString  
         }
 	}
 
 	@Override
 	protected void showRecord(long id, HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		
 	}
 }
